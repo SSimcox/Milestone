@@ -1,34 +1,53 @@
 body {
-    background-color: #708EA4;
+    background-color: #761c19;
+    /*background-color: #708EA4;*/
     /*background-color: #FFFFFF;*/
 }
 
-.navbar {
-    background-color: #29516D;
-    margin: 0px;
-    border: 1px solid #29516D;
-    align-content: right;
+header{
+    height: 50px;
+    width: 1100px;
+    margin: 30px auto 115px auto;
 }
 
-.nav {
+nav{
+    float: right;
+    font-family:'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: #00bcd4;
+    color: rgb(12,227,252);
+    margin-left: 35px;
+    margin-top: 12px;
+}
+
+.logo{
+    height: 50px;
+}
+
+nav ul{
     float: right;
     list-style-type: none;
     padding-right: 10px;
+    margin: 0;
 }
 
-.nav li{
+nav ul li{
     display: inline-block;
     background-color: inherit;
 }
 
-.nav li :hover{
-    background-color: #032136;
-}
-
-.nav li a, .gameName a{
-    color: #D4876A;
+nav ul li a, .gameName a{
     margin: 0px 2px;
     padding-right: 10px;
+}
+
+nav ul li a:hover{
+    color: white;
+}
+nav ul li a:active{
+    color: white;
+    border-bottom: 2px solid white;
 }
 
 .sectionHead {
