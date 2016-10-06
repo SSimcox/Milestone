@@ -1,0 +1,81 @@
+body {
+    background-color: #708EA4;
+    /*background-color: #FFFFFF;*/
+}
+
+.navbar {
+    background-color: #29516D;
+    margin: 0px;
+    border: 1px solid #29516D;
+    align-content: right;
+}
+
+.nav {
+    float: right;
+    list-style-type: none;
+    padding-right: 10px;
+}
+
+.nav li{
+    display: inline-block;
+    background-color: inherit;
+}
+
+.nav li :hover{
+    background-color: #032136;
+}
+
+.nav li a, .gameName a{
+    color: #D4876A;
+    margin: 0px 2px;
+    padding-right: 10px;
+}
+
+.sectionHead {
+    background-color: #553F00;
+    color: #FFC1AA;
+    border: 1px solid #553F00;
+    margin: 20px 0 0 0;
+    font-size: 4rem;
+}
+
+.gameList {
+    background-color: #29516D;
+    margin: 0;
+}
+
+.gameName {
+    display: inline-block;
+    text-decoration: none;
+}
+
+@-webkit-keyframes wkgraphicsIn {
+    from{height: 0px;}
+    to{height: 700px;}
+}
+
+@keyframes graphicsIn {
+    from{height: 0px;}
+    to{height: 700px;}
+}
+
+iframe {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.graphicsFrame {
+    display: none;
+    height: 700px;
+    width: 600px;
+    -webkit-animation-name: wkgraphicsIn;
+    -webkit-animation-duration: 2s;
+    animation-name: graphicsIn;
+    animation-duration: 2s;
+}
+
+#dc-iframe {
+    display: none;
+}

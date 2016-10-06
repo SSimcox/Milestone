@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <title>3d Maze</title>
+
+        <link rel="stylesheet" type="text/css" href="../graphics.css">
+        <script type="text/javascript" src="./Boilerplate/webgl-utils.js"></script>
+        <script type="text/javascript" src="./Boilerplate/initShaders2.js"></script>
+        <script type="text/javascript" src="./Boilerplate/MV.js"></script>
+        <script type="text/javascript" src="./unionFind.js"></script>
+        <script type="text/javascript" src="./vertexMaker.js"></script>
+        <script type="text/javascript" src="./3dMaze.js"></script>
+        <script type="text/javascript" src="./main.js"></script>
+    </head>
+
+    <body >
+        <h1>3D Maze</h1>
+        <h2>Steven Simcox</h2>
+        <div class="mainCanvas">
+            <canvas id="gl-canvas" width="512" height="512">
+                Oops ... your browser doesn't support the HTML5 canvas element
+            </canvas>
+            <div>Width of the maze. (Max is )</div>
+            <input id="MazeCells" type="text" label="Dimensions"  name="Dimensions" value="9">
+            <!--<input id="DCDirection" type="text"  name="Direction"value="0">-->
+            <input id="MazeRemake" type="button" value="Refresh Image">
+            <input id="toggle-bird" type="button" value="Toggle Bird's eye view">
+        </div>
+        <div id="location-div" class="mainCanvas">
+            <p id="current-cell"></p><br/>
+            <p id="target-cell"></p>
+        </div>
+    </body>
+
+</html>
