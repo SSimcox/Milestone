@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Home - Steven Simcox</title>
         <link href="./bootstrap.css" rel="stylesheet">
-        <link href="./eigames.css" rel="stylesheet">
+        <link href="./main.css" rel="stylesheet">
     </head>
     <body>
         <!-- Begin Header -->
@@ -20,45 +20,56 @@
         <!-- End Header -->
 
         <!-- Begin Page Content -->
-        <div>
-            <h1 class="sectionHead">CS5400</h1>
-            <ul class="gameList">
-                <li id="dclink" class="gameName" onclick="dcclick()"><a>Dragon Curve</a></li>
-                <li id="smlink" class="gameName" onclick="smclick()"><a>Sierpinski Mountain</a></li>
-                <li id="3dmlink" class="gameName"><a href="./Graphics-I/3DMaze/index.html" target="_top">3d Maze</a></li>
-            </ul>
-            <div id="dc-iframe" class="graphicsFrame">
-                <iframe id="dcframe" src="">
-                    Oops...Your browser does not support iframes
-                </iframe>
-            </div>
+        <div class="main">
+            <section>
+                <h1>CS5400</h1>
+                <ul class="section-list">
+                    <li id="dclink" class="gameName" onclick="dcclick()"><a>Dragon Curve</a></li>
+                    <li id="smlink" class="gameName" onclick="smclick()"><a>Sierpinski Mountain</a></li>
+                    <li id="3dmlink" class="gameName"><a href="./Graphics-I/3DMaze/index.html" target="_top">3d Maze</a></li>
+                </ul>
+                <div id="dc-iframe" class="graphicsFrame">
+                    <iframe id="dcframe" src="">
+                        Oops...Your browser does not support iframes
+                    </iframe>
+                </div>
 
-            <div id="sm-iframe" class="graphicsFrame">
-                <iframe id="smframe" src="">
-                    Oops...Your browser does not support iframes
-                </iframe>
-            </div>
-        </div>
-        <div>
-            <h1 class="sectionHead">CS2610</h1>
-            <ul class="gameList">
-                <li class="gameName"><a href="./CS2610/blogpost.html" target="_blank">Blog Post!</a></li>
-            </ul>
+                <div id="sm-iframe" class="graphicsFrame">
+                    <iframe id="smframe" src="">
+                        Oops...Your browser does not support iframes
+                    </iframe>
+                </div>
+            </section>
+            <section>
+                <h1>CS2610</h1>
+                <ul class="section-list">
+                    <li class="gameName"><a href="./CS2610/blogpost.html" target="_blank">Blog Post!</a></li>
+                </ul>
+            </section>
         </div>
 
         <!-- BEGIN FOOTER -->
         <footer>
             <div>
                 <nav>
-                    <ul>
+                    <ul class="footer-nav">
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="./about.html">About</a></li>
                         <li><a href="./contact.html">Contact</a></li>
                     </ul>
                 </nav>
-                <ul class="social">
-
-                </ul>
+                <nav class="social">
+                    <ul>
+                        <li><a class="no-hov" href="http://github.com/SSimcox"><img class="social-icon" src="./images/GitHub-Mark-Light-32px.png" alt="github octocat mark"></a></li>
+                        <li><a class="no-hov" href="https://www.facebook.com/steven.simcox.98"><img class="social-icon" src="./images/FB-f-Logo__white_50.png" alt="github octocat mark"></a></li>
+                        <li><a class="no-hov" href="https://twitter.com/sdsimcox"><img class="social-icon" src="./images/TwitterLogo_white.png" alt="github octocat mark"></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <pre>&copy; eiGames 2016
+Social media Images/Icons provided by their respective owners
+                </pre>
             </div>
         </footer>
         <!-- END FOOTER -->
