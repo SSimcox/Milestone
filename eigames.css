@@ -3,11 +3,19 @@ body {
     /*background-color: #708EA4;*/
     /*background-color: #FFFFFF;*/
 }
-
+div{
+    width: 1100px;
+}
 header{
     height: 50px;
     width: 1100px;
     margin: 30px auto 115px auto;
+}
+
+footer{
+    margin-top: 100px;
+    height: 105px;
+    background-color: #500705;
 }
 
 nav{
@@ -15,14 +23,20 @@ nav{
     font-family:'Raleway', sans-serif;
     font-weight: 800;
     font-size: 12px;
-    color: #00bcd4;
-    color: rgb(12,227,252);
+    color: #2ce8fd;
     margin-left: 35px;
     margin-top: 12px;
 }
 
-.logo{
-    height: 50px;
+footer div{
+    height: 34px;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+footer nav{
+    float: left;
+    margin-top: 10px;
 }
 
 nav ul{
@@ -40,6 +54,7 @@ nav ul li{
 nav ul li a, .gameName a{
     margin: 0px 2px;
     padding-right: 10px;
+    color: inherit;
 }
 
 nav ul li a:hover{
@@ -48,6 +63,10 @@ nav ul li a:hover{
 nav ul li a:active{
     color: white;
     border-bottom: 2px solid white;
+}
+
+.logo{
+    height: 50px;
 }
 
 .sectionHead {
