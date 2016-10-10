@@ -2,11 +2,12 @@ a{
     color:inherit;
 }
 body {
-    background-color: #761c19;
     background-color: #002240;
-    color: #2ce8fd;
-    /*background-color: #708EA4;*/
-    /*background-color: #FFFFFF;*/
+    color: white;
+    /*background-color: #708EA4;
+    background-color: #761c19;
+    background-color: #FFFFFF;
+    color: #2ce8fd;*/
 }
 
 header{
@@ -82,6 +83,9 @@ a:hover, a.active{
     border-bottom: 2px solid #2ce8fd;
     text-decoration: none;
 }
+a:active{
+    margin-top: 1px;
+}
 
 .logo{
     height: 50px;
@@ -143,4 +147,10 @@ iframe {
 
 #dc-iframe {
     display: none;
+}
+
+@media all and (max-width: 750px){
+    .main{
+        flex-direction: column;
+    }
 }
