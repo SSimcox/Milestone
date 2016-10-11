@@ -4,6 +4,7 @@ html{
 }
 a{
     color:inherit;
+    font-size: inherit;
 }
 body {
     background-color: #002240;
@@ -170,20 +171,12 @@ iframe {
     .main{
         flex-direction: column;
     }
-}
-
-.sticky-footer-wrapper {
-    /*min-height: calc(100vh - (4.2857vh + 7.1429vh + 3.5714vh + 2.8571vh + 2.8571vh + 2.8571vh + 6vh + 15vh));*/
-    /*min-height: calc(100vh - (4.2857vh + 17.4219vh + 7.1429vh + 15vh + 3.09vh));*/
-    min-height: 100%;
-    /*height: auto;*/
-    display: flex;
-    flex-direction: column;
-    /*margin: 0 auto -15vh;*/
-}
-
-.sticky-footer-push{
-    height: 15vh;
+    nav{
+        font-size: 14px;
+    }
+    h1{
+        font-size: 26px;
+    }
 }
 
 @media all and (max-height: 400px){
