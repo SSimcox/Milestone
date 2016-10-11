@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Home - Steven Simcox</title>
-        <link href="./bootstrap.css" rel="stylesheet">
-        <link href="./main.css" rel="stylesheet">
-        <script   src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link href="stylesheets/bootstrap.css" rel="stylesheet">
+        <link href="stylesheets/main.css" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     </head>
     <body>
         <!-- Begin Header -->
@@ -23,10 +25,10 @@
         <!-- Begin Page Content -->
         <div class="main">
             <section>
-                <h1>CS5400</h1>
+                <h1>Learning Computer Graphics</h1>
                 <ul class="section-list">
-                    <li id="dclink" class="gameName" onclick="dcclick()"><a>Dragon Curve</a></li>
-                    <li id="smlink" class="gameName" onclick="smclick()"><a>Sierpinski Mountain</a></li>
+                    <li id="dclink" class="gameName"><a>Dragon Curve</a></li>
+                    <li id="smlink" class="gameName"><a>Sierpinski Mountain</a></li>
                     <li id="3dmlink" class="gameName"><a href="./Graphics-I/3DMaze/index.html" target="_top">3d Maze</a></li>
                 </ul>
                 <div id="dc-iframe" class="graphicsFrame">
@@ -42,7 +44,7 @@
                 </div>
             </section>
             <section>
-                <h1>CS2610</h1>
+                <h1>Learning Web Development</h1>
                 <ul class="section-list">
                     <li class="gameName"><a href="./CS2610/blogpost.html" target="_blank">Blog Post!</a></li>
                 </ul>
@@ -50,6 +52,8 @@
         </div>
 
         <!-- BEGIN FOOTER -->
+
+            <!--<div class="sticky-footer-push"></div>-->
         <footer>
             <div>
                 <nav>
@@ -74,45 +78,6 @@ Social media Images/Icons provided by their respective owners
             </div>
         </footer>
         <!-- END FOOTER -->
-        <script>
-            var dcon = false;
-            var smon = false;
-            function dcclick() {
-                if(!dcon) {
-                    document.getElementById("dcframe").setAttribute("src","./Graphics-I/DragonCurve/index.html");
-                    document.getElementById("dc-iframe").style.height = "700px";
-                    document.getElementById("dc-iframe").style.display = "block";
-                    document.getElementById("sm-iframe").style.height = "0px";
-                    document.getElementById("sm-iframe").style.display = "none";
-                    dcon = true;
-                }
-                else
-                {
-                    dcon = false;
-                    document.getElementById("dc-iframe").style.height = "0px";
-                    document.getElementById("dc-iframe").style.display = "none";
-                    document.getElementById("dcframe").setAttribute("src","");
-                }
-                }
-            function smclick() {
-                if(!smon) {
-
-                    document.getElementById("smframe").setAttribute("src","./Graphics-I/SierpinskiMountain/index.html");
-                    document.getElementById("dc-iframe").style.height = "0px";
-                    document.getElementById("dc-iframe").style.display = "none";
-                    document.getElementById("sm-iframe").style.height = "700px";
-                    document.getElementById("sm-iframe").style.display = "block";
-                    document.getElementById("dcframe").setAttribute("src","");
-                    smon = true;
-                }
-                else
-                {
-                    smon = false;
-                    document.getElementById("sm-iframe").style.height = "0px";
-                    document.getElementById("sm-iframe").style.display = "none";
-                    document.getElementById("smframe").setAttribute("src","");
-                }
-                }
-        </script>
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>
