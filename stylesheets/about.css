@@ -9,7 +9,6 @@ h1.about{
 }
 
 section.about{
-    background-color: #000036;
     border-left: 1px solid #2ce8fd;
     border-bottom: 1px solid #2ce8fd;
     flex: 1 0 auto;
@@ -45,8 +44,6 @@ p.about.summary{
     display:none;
     font-size: 18px;
     margin: 0 auto;
-    color: black;
-    background-color: white;
     border: 1px solid black;
     height: auto;
     text-align: center;
