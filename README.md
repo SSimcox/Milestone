@@ -1,2 +1,2 @@
-# cs2600
-Assignments and website for cs2600
+# Milestone
+This is the website I am writing for my CS 2600 class.
