@@ -7,6 +7,7 @@
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link href="stylesheets/bootstrap.css" rel="stylesheet">
         <link href="stylesheets/main.css" rel="stylesheet">
+        <link href="stylesheets/about.css" rel="stylesheet">
         <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -15,39 +16,73 @@
             <a href="./index.html"><img class="logo" src="./images/logoCyan.png" alt="e i Games logo"></a>
             <nav>
                 <ul>
-                    <li><a class="active" href="./about.html">About</a></li>
+                    <li><a class="active" href="./about.html">About Me</a></li>
                     <li><a href="./contact.html">Contact</a></li>
                 </ul>
             </nav>
         </header>
         <!-- End Header -->
 
+        <!-- Begin Main -->
+        <div class="main about">
+            <section class="about">
+                <h1 id="abt-me-h" class="about">About Me</h1>
+                <p id="abt-me" class="about summary">
+                    <img class="abt-pic" src="images/prof.jpg" alt="Picture of Steven Simcox">
+                    This website is dedicated to my progression in Web Development and Computer Graphics.
+                    I am currently a student at Utah State University studying for a Bachelor's degree in
+                    Computer Science. I am interested in creating projects in computer graphics to post
+                    here as well as documenting some of the things about web dev I find interesting or
+                    useful.
+                </p>
+            </section>
+            <section class="about">
+                <h1 id="abt-cg-h" class="about">Computer Graphics</h1>
+                <p id="abt-cg" class="about summary">
+                    I am currently studying in an introduction to computer graphics course. We are using
+                    WebGl to learn the basics of graphical programming which as of this writing provides
+                    support to OpenGl 2.0 calls. The book I am using is "Interactive Computer Graphics" by
+                    <a href="https://www.cs.unm.edu/~angel/">Edward Angel</a>
+                    <img id="webgl-logo" class="abt-pic" src="images/WebGL_RGB_June16.svg" alt="Web G L Logo">
+                </p>
+            </section>
+            <section class="about">
+                <h1 id="abt-wd-h" class="about">Web Development</h1>
+                <p id="abt-wd" class="about summary">
+                    I am in an introduction to web development course learning the basics of HTML, CSS, and Javascript.
+                    One of my major weaknesses is design. Layout and color composition are things that I struggle with
+                    as my personal preference is often vastly different to most people.
+                </p>
+            </section>
+        </div>
+        <!-- End Main -->
 
-
-        <!-- BEGIN FOOTER -->
+        <!-- Begin Footer -->
         <footer>
             <div>
                 <nav>
                     <ul class="footer-nav">
                         <li><a href="./index.html">Home</a></li>
-                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./about.html">About Me</a></li>
                         <li><a href="./contact.html">Contact</a></li>
                     </ul>
                 </nav>
                 <nav class="social">
                     <ul>
                         <li><a class="no-hov" href="http://github.com/SSimcox"><img class="social-icon" src="./images/GitHub-Mark-Light-32px.png" alt="github octocat mark"></a></li>
-                        <li><a class="no-hov" href="https://www.facebook.com/steven.simcox.98"><img class="social-icon" src="./images/FB-f-Logo__white_50.png" alt="github octocat mark"></a></li>
-                        <li><a class="no-hov" href="https://twitter.com/sdsimcox"><img class="social-icon" src="./images/TwitterLogo_white.png" alt="github octocat mark"></a></li>
+                        <li><a class="no-hov" href="https://www.facebook.com/steven.simcox.98"><img class="social-icon" src="./images/FB-f-Logo__white_50.png" alt="facebook f logo"></a></li>
+                        <li><a class="no-hov" href="https://twitter.com/sdsimcox"><img class="social-icon" src="./images/TwitterLogo_white.png" alt="twitter bird logo"></a></li>
                     </ul>
                 </nav>
             </div>
             <div>
                 <pre>&copy; eiGames 2016
 Social media Images/Icons provided by their respective owners
+WebGL logo provided by Khronos Group
                 </pre>
             </div>
         </footer>
-        <!-- END FOOTER -->
+        <!-- End Footer -->
+    <script type="text/javascript" src="js/about.js"></script>
     </body>
 </html>
