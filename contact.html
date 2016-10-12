@@ -7,6 +7,7 @@
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link href="stylesheets/bootstrap.css" rel="stylesheet">
         <link href="stylesheets/main.css" rel="stylesheet">
+        <link href="stylesheets/contact.css" rel="stylesheet">
         <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -22,20 +23,31 @@
         </header>
         <!-- End Header -->
 
-        <!-- BEGIN MAIN -->
-        <div class="main">
-            <form id="contact-form" name="contactForm">
-                <input type="text" name="firstName" placeholder="First Name" required>
-                <input type="text" name="lastName" placeholder="Last Name" required>
-                <input type="email" name="emailAddress" placeholder="example@domain.ext" required>
-                <input type="email" required>
-                <button type="submit">Subscribe!</button>
-            </form>
+        <!-- Begin Main -->
+        <div class="main contact">
+            <section class="contact">
+                <h1>Learn It On The Way</h1>
+                <p>
+                    I'm on a personal journey to learn Web Development and Computer Graphics.
+                    Join me and find out what tips and tricks I learn to make these new worlds
+                    friendlier places to navigate! For now I will post weekly graphics programs
+                    and the occasional "Today I learned..." style blog.
+                </p>
+            </section>
+            <section class="contact">
+                <form id="contact-form" name="contactForm">
+                    <input class="half-flex" type="text" name="firstName" placeholder="First Name" required>
+                    <input class="half-flex" type="text" name="lastName" placeholder="Last Name" required>
+                    <input id="email" type="email" name="emailAddress" placeholder="Email Address" required>
+                    <input id="confirm" type="email" placeholder="Confirm Email Address" required>
+                    <button id="submit">Subscribe!</button>
+                </form>
+            </section>
         </div>
-        <!-- END MAIN -->
+        <!-- End Main -->
 
 
-        <!-- BEGIN FOOTER -->
+        <!-- Begin Footer -->
         <footer>
             <div>
                 <nav>
@@ -59,6 +71,7 @@ Social media Images/Icons provided by their respective owners
                 </pre>
             </div>
         </footer>
-        <!-- END FOOTER -->
+        <!-- End Footer -->
+    <script type="text/javascript" src="js/contact.js"></script>
     </body>
 </html>
