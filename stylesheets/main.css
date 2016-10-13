@@ -7,8 +7,6 @@ a{
     font-size: inherit;
 }
 body {
-    background-color: #002240;
-    color: white;
     margin-top: 4.2857vh;
     display: flex;
     flex-direction: column;
@@ -62,8 +60,7 @@ li{
 }
 
 h1{
-    background-color: #500705;
-    background-color: #000036;
+    /*background-color: #500705;*/
     text-align: center;
     border-left: 1px solid #2ce8fd;
     margin: 2.8571vh 0 0 0;
@@ -77,10 +74,8 @@ h1{
 footer{
     margin-top: 14.2857vh;
     height: 15vh;
-    background-color: #500705;
-    background-color: #000036;
+    /*background-color: #500705;*/
     width: 100%;
-    color: white;
 }
 
 footer div{
@@ -94,7 +89,9 @@ pre{
 
 a:hover, a.active{
     color: white;
+    color: #331E36;
     border-bottom: 2px solid #2ce8fd;
+    border-bottom: 2px solid #1F363D;
     text-decoration: none;
 }
 
