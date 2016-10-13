@@ -52,8 +52,8 @@ $(document).ready(function(){
             document.getElementById("smframe").setAttribute("src","");
         }
     }
-    $('#dclink').on("click", dcclick);
-    $('#smlink').on("click", smclick);
+    //$('#dclink').on("click", dcclick);
+    //$('#smlink').on("click", smclick);
 
 
 });
