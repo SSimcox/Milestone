@@ -25,6 +25,8 @@ function formValidate(){
 }
 
 $(document).ready(function(){
+
+
     $('#submit').on("click", function(){
             $('#contact-form').submit(function(){
                 var valid = formValidate();
@@ -32,5 +34,6 @@ $(document).ready(function(){
                 return valid;
             });
     });
+
 
 });

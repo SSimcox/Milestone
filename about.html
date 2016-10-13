@@ -8,12 +8,13 @@
         <link href="stylesheets/bootstrap.css" rel="stylesheet">
         <link href="stylesheets/main.css" rel="stylesheet">
         <link href="stylesheets/about.css" rel="stylesheet">
+        <link href="stylesheets/colors.css" rel="stylesheet">
         <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body class="bg-main col-main">
         <!-- Begin Header -->
         <header>
-            <a href="./index.html"><img class="logo" src="./images/logoCyan.png" alt="e i Games logo"></a>
+            <a href="./index.html"><img class="logo" src="./images/logoDL.png" alt="e i Games logo"></a>
             <nav>
                 <ul>
                     <li><a class="active" href="./about.html">About Me</a></li>
@@ -24,10 +25,10 @@
         <!-- End Header -->
 
         <!-- Begin Main -->
-        <div class="main about">
+        <div class="main about bg-sec">
             <section class="about">
                 <h1 id="abt-me-h" class="about">About Me</h1>
-                <p id="abt-me" class="about summary">
+                <p id="abt-me" class="about summary bg-white col-black">
                     <img class="abt-pic" src="images/prof.jpg" alt="Picture of Steven Simcox">
                     This website is dedicated to my progression in Web Development and Computer Graphics.
                     I am currently a student at Utah State University studying for a Bachelor's degree in
@@ -38,7 +39,7 @@
             </section>
             <section class="about">
                 <h1 id="abt-cg-h" class="about">Computer Graphics</h1>
-                <p id="abt-cg" class="about summary">
+                <p id="abt-cg" class="about summary bg-white col-black">
                     I am currently studying in an introduction to computer graphics course. We are using
                     WebGl to learn the basics of graphical programming which as of this writing provides
                     support to OpenGl 2.0 calls. The book I am using is "Interactive Computer Graphics" by
@@ -48,7 +49,7 @@
             </section>
             <section class="about">
                 <h1 id="abt-wd-h" class="about">Web Development</h1>
-                <p id="abt-wd" class="about summary">
+                <p id="abt-wd" class="about summary bg-white col-black">
                     I am in an introduction to web development course learning the basics of HTML, CSS, and Javascript.
                     One of my major weaknesses is design. Layout and color composition are things that I struggle with
                     as my personal preference is often vastly different to most people.
@@ -58,7 +59,7 @@
         <!-- End Main -->
 
         <!-- Begin Footer -->
-        <footer>
+        <footer class="bg-sec">
             <div>
                 <nav>
                     <ul class="footer-nav">

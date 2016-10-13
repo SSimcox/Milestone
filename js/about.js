@@ -34,7 +34,11 @@ $(document).ready(function(){
         }
         else
         {
-            $('#abt-cg').toggle(transitionTime);
+            $('#abt-cg').toggle(transitionTime, function(){
+                setTimeout(3000, function(){
+
+                })
+            });
             $('#abt-me').hide(transitionTime);
             $('#abt-wd').hide(transitionTime);
             cg = true;
