@@ -46,8 +46,12 @@ window.onload = function init()
     //-----------------------------------------------
     //  Load shaders and initialize attribute buffers
     //-----------------------------------------------
-    var program = initShaders( gl, "./shaders/vshader.glsl",
-        "./shaders/fshader.glsl" );
+
+    //****************initShaders2.js
+    // var program = initShaders( gl, "./shaders/vshader.glsl",
+    //     "./shaders/fshader.glsl" );
+    //****************initShaders.js
+    var program = initShaders(gl, "vertex-shader","fragment-shader");
     //---------------------------------
     // Initialize bufferId for vertices
     //---------------------------------
