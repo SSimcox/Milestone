@@ -1,0 +1,20 @@
+Dividing Models into parts to be rendered separately
+
+Using a tree for the models and a stack for the current transformations
+
+Start with the changes to the world,
+Then multiply changed to A.
+Then multiply the changes to B (a child of A)
+
+
+
+
+
+Scene Graphs: Useful for beginning animation
+
+
+
+Kinetics moving from the collected variables space to 3d space.
+Reverse Kinetics is not cool, way too hard.
+
+ We'll do keyframing with linear interpolation
