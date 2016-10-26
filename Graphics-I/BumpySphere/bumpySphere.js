@@ -48,9 +48,12 @@ window.onload = function init()
     var vPos = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPos, 3, gl.FLOAT, false, 12, 0);
     gl.enableVertexAttribArray( vPos );
+    var vNorm = gl.getAttribLocation(program, "vNormal");
+    gl.vertexAttribPointer( vNorm, 3, gl.FLOAT, false, 12, 12);
+    gl.enableVertexAttribArray( vNorm );
 
-    viewTransform = gl.getUniformLocation(program, "transform");
-
+    viewTransform = gl.getUniformLocation(program, "perspective");
+    modelView = gl.getUniformLocation(program, "modelView");
     console.log(octahedronVertices);
     console.log(octahedronIndex);
     render();
@@ -62,16 +65,13 @@ function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     // gl.drawArrays( gl.LINE_STRIP, 0, vertices.length);
-    //var at = lookAt(vec3(0,0,3),vec3(0,0,0),vec3(0,1,0));
-    //var look = perspective(90,1,0,5);
-    //var trans = mult(look,at);
-    //theta += 2;
-    //if(theta >= 358 && theta <= 360) theta = 0;
-    //theta = 135;
-    //var rot = rotate(theta, [0,1,0]);
-    //trans = mult(trans,rot);
-    //var trans = at;
-    //gl.uniformMatrix4fv(viewTransform, false, flatten(rot));
+    var at = lookAt(vec3(0,0,3),vec3(0,0,0),vec3(0,1,0));
+    var look = perspective(90,1,0,5);
+    theta += 2;
+    var rot = rotate(theta, [0,1,0]);
+    var trans = mult(at,rot);
+    gl.uniformMatrix4fv(modelView, false, flatten(trans));
+    gl.uniformMatrix4fv(viewTransform,false,flatten(look));
     gl.drawElements(gl.TRIANGLES, octahedronIndex.length ,gl.UNSIGNED_SHORT,0);
 
     requestAnimFrame(render);

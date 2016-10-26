@@ -4,7 +4,7 @@
 
 var octahedronVertices = [];
 var bisections = [];
-var iterations = 4;
+var iterations = 5;
 
 var octahedronIndex = [
     0,1,2,
