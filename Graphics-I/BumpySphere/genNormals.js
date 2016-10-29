@@ -20,7 +20,8 @@ function genNormals(vertices, indices)
             }
             else
             {
-                var currentNormal = mult(newVertices[currentIndex * 2 + 1], [numParts[currentIndex], numParts[currentIndex],numParts[currentIndex]]);
+                var currentNormal = newVertices[currentIndex * 2 + 1];
+                currentNormal = mult(currentNormal, [numParts[currentIndex], numParts[currentIndex], numParts[currentIndex]]);
                 numParts[currentIndex]++;
                 currentNormal = add(currentNormal, normal);
                 newVertices[currentIndex * 2 + 1] = vec3(currentNormal[0] / numParts[currentIndex],currentNormal[1] / numParts[currentIndex], currentNormal[2] / numParts[currentIndex]);
@@ -31,6 +32,14 @@ function genNormals(vertices, indices)
     for(var i = 0; i < indices.length; ++i)
     {
         indices[i]*=2;
+    }
+
+
+    for(var k = 1; k < newVertices.length; k+=2){
+        var x = (Math.random() - 1.0) / 3000;
+        var y = (Math.random() - 1.0) / 3000;
+        var z = (Math.random() - 1.0) / 3000;
+        newVertices[k] = add(newVertices[k], vec3(x,y,z));
     }
 
     return newVertices;

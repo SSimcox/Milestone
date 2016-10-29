@@ -5,27 +5,29 @@ attribute vec3 myColor;
 varying vec4 outColor;
 uniform mat4 modelView;
 uniform mat4 perspective;
-//uniform vec3 lightPosition;
+uniform mat4 lightRotation;
 
 
 void main() {
 
-    vec4 ambientProduct = vec4(0,.15,.15,1.0);
-    vec4 diffuseProduct = vec4(0,.35,.35,1.0);
-    vec4 specularProduct = vec4(1.0,.5,.5,1.0);
-    float shininess = 100.0;
-    vec3 lightPosition = vec3(2.0,2.0,0.0);//Hard coded for now
+    vec4 ambientProduct = vec4(.5,0.25,0.0,1.0);
+    vec4 diffuseProduct = vec4(.75,0.37,0.0,1.0);
+    vec4 specularProduct = vec4(1.0,.5,0.0,1.0);
+    float shininess = 50.0;
+    vec4 lightPosition = vec4(1.0,1.0,2.0,0.0);//Hard coded for now
 
 
-    vec3 pos = -(modelView * vPosition).xyz;
+    vec3 pos = (modelView * vPosition).xyz;
 
     //fixed light postion
 
-    vec3 light = lightPosition.xyz;
-    vec3 L = normalize( light - pos );
+    vec3 light = (lightRotation * lightPosition).xyz;
+    //vec3 light = lightPosition.xyz;
+    //vec3 L = normalize( light - pos );
+    vec3 L = normalize(lightPosition.xyz);
+    L = normalize(light);
 
-
-    vec3 E = normalize( -pos );
+    vec3 E = -normalize( pos );
     vec3 H = normalize( L + E );
 
     vec4 NN = vec4(vNormal.xyz,0);
@@ -48,16 +50,7 @@ void main() {
     }
     outColor = (ambient + diffuse +specular);
 
-
-    float scale = 1.0;
-    float move = 0.0;
-    mat4 moveBack = mat4(// Hard coded worldView
-    scale,0,0,0,
-    0,scale,0,0,
-    0,0,scale,move,
-    0,0,0,1.0
-    );
-
+    outColor.a = 1.0;
 	gl_PointSize = 1.0;
-    gl_Position = moveBack * vPosition;
+    gl_Position = perspective * modelView * vPosition;
 }

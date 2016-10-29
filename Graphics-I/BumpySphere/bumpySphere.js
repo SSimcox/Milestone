@@ -3,9 +3,25 @@
  */
 
 var viewTransform;
+var modelView;
+var lightRotation;
+var theta = 0;
+var delta = 0;
+var isRotating = false;
+var mouseDown = false;
+
+
 
 window.onload = function init()
 {
+    document.body.addEventListener('mousedown',function(){
+        mouseDown = true;
+        console.log(mouseDown);
+    });
+    document.body.addEventListener('mouseup',function(){
+        mouseDown = false;
+        console.log(mouseDown);
+    });
     // Retrieve HTML elements
     var canvas = document.getElementById( "gl-canvas" );
 
@@ -13,13 +29,27 @@ window.onload = function init()
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" );}
 
+    // document.getElementById('BSRotate').addEventListener('click', function(){
+    //     isRotating = !isRotating;
+    // });
+
+    document.getElementById('LRotL').addEventListener('click', function(){delta-=5;});
+    document.getElementById('LRotR').addEventListener('click', function(){delta+=5;});
+    document.getElementById('SRotL').addEventListener('click', function(){theta-=5;});
+    document.getElementById('SRotR').addEventListener('click', function(){theta+=5;});
+
+
+
+
+
 
     makeSphere();
     octahedronVertices = genNormals(octahedronVertices,octahedronIndex);
-    // Execute sierpinskiMountain
-    //triangles = getTriangles();
 
     gl.enable(gl.DEPTH_TEST);
+    gl.enable(gl.CULL_FACE);
+    gl.cullFace(gl.BACK);
+    //gl.cullFace(gl.FRONT);
     // Near things obscure far things
     gl.depthFunc(gl.LEQUAL);
 
@@ -30,11 +60,11 @@ window.onload = function init()
     gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
 
     //  Load shaders and initialize attribute buffers
-    var program = initShaders( gl, "./shaders/vshader.glsl",
-        "./shaders/fshader.glsl" );
+    // var program = initShaders( gl, "./shaders/vshader.glsl",
+    //     "./shaders/fshader.glsl" );
 
-    // var program = initShaders( gl, "./shaders/shader.js",
-    //     "./shaders/shader.js" );
+    var program = initShaders( gl, "vertex-shader",
+        "fragment-shader" );
     gl.useProgram( program );
 
     // Load the data into the GPU
@@ -54,24 +84,30 @@ window.onload = function init()
 
     viewTransform = gl.getUniformLocation(program, "perspective");
     modelView = gl.getUniformLocation(program, "modelView");
-    console.log(octahedronVertices);
-    console.log(octahedronIndex);
+    lightRotation = gl.getUniformLocation(program, "lightRotation");
+
     render();
 };
 
-var theta = 0;
 
 function render()
 {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     // gl.drawArrays( gl.LINE_STRIP, 0, vertices.length);
     var at = lookAt(vec3(0,0,3),vec3(0,0,0),vec3(0,1,0));
-    var look = perspective(90,1,0,5);
-    theta += 2;
-    var rot = rotate(theta, [0,1,0]);
-    var trans = mult(at,rot);
+    var look = perspective(60,1,0,5);
+    if(isRotating){ theta += 1;}
+    var objectRot = rotate(theta, [0,1,0]);
+    var lightRot = rotate(delta,[0,1,0]);
+    var trans = mult(at,objectRot);
+    var lightTrans = mult(at, lightRot);
+
+    theta = $('#SSlide').val();
+    delta = $('#LSlide').val();
+
     gl.uniformMatrix4fv(modelView, false, flatten(trans));
     gl.uniformMatrix4fv(viewTransform,false,flatten(look));
+    gl.uniformMatrix4fv(lightRotation,false,flatten(lightTrans));
     gl.drawElements(gl.TRIANGLES, octahedronIndex.length ,gl.UNSIGNED_SHORT,0);
 
     requestAnimFrame(render);
