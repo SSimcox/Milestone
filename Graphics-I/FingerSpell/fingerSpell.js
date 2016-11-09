@@ -118,34 +118,34 @@ function render()
 //function genNode(id,xs,ys,zs,xr,yr,zr,xt,yt,zt)
 
 function initPhalanges(id){
-    palm = new genNode(id,.75,.75,.2,0,90,0,0,0,0);
+    palm = new genNode(id,.75,.75,.2,0,0,0,0,0,0);
     thumb1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    thumb2 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    thumb3 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    thumb2 = new genNode(id,1,1,1,0,0,0,0,0,0);
+    thumb3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     palm.leftChild = thumb1;
     thumb1.leftChild = thumb2;
     thumb2.leftChild = thumb3;
-    index1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    index2 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    index3 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    index1 = new genNode(id,.1,.2,.2,0,0,0,0,0,0);
+    index2 = new genNode(id,1,1,1,0,0,0,0,0,0);
+    index3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     thumb1.rightSibling = index1;
     index1.leftChild = index2;
     index2.leftChild = index3;
     middle1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    middle2 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    middle3 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    middle2 = new genNode(id,1,1,1,0,0,0,0,0,0);
+    middle3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     index1.rightSibling = middle1;
     middle1.leftChild = middle2;
     middle2.leftChild = middle3;
     ring1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    ring2 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    ring3 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    ring2 = new genNode(id,1,1,1,0,0,0,0,0,0);
+    ring3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     middle1.rightSibling = ring1;
     ring1.leftChild = ring2;
     ring2.leftChild = ring3;
     pinky1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    pinky2 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
-    pinky3 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    pinky2 = new genNode(id,1,1,1,0,0,0,0,0,0);
+    pinky3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     ring1.rightSibling = pinky1;
     pinky1.leftChild = pinky2;
     pinky2.leftChild = pinky3;
@@ -175,10 +175,11 @@ function drawNode(gl, prevStuff, node, viewMatrix, look, lightTrans){
     var endMatrix = mult(viewMatrix,mult(translateMatrix,mult(scaleMatrix,rotationMatrix)));
 
     gl.uniformMatrix4fv(modelView, false, flatten(endMatrix));
+    look = mat4();
     gl.uniformMatrix4fv(viewTransform,false,flatten(look));
     gl.uniformMatrix4fv(lightRotation,false,flatten(lightTrans));
 
     gl.drawElements(gl.TRIANGLES, cylinderIndex.length ,gl.UNSIGNED_SHORT,0);
-    drawNode(gl, curStuff, node.leftChild, viewMatrix, look, lightTrans);
-    drawNode(gl, prevStuff, node.rightSibling, viewMatrix, look, lightTrans);
+    //drawNode(gl, curStuff, node.leftChild, viewMatrix, look, lightTrans);
+    //drawNode(gl, prevStuff, node.rightSibling, viewMatrix, look, lightTrans);
 }
