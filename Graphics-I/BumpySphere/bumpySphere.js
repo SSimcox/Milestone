@@ -43,8 +43,8 @@ window.onload = function init()
 
 
 
-    makeSphere();
-    octahedronVertices = genNormals(octahedronVertices,octahedronIndex);
+    makeCylinder();
+    cylinderVertices = genNormals(cylinderVertices,cylinderIndex);
 
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.CULL_FACE);
@@ -73,7 +73,7 @@ window.onload = function init()
     gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(flatten(octahedronVertices)), gl.STATIC_DRAW );
     var indicesBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indicesBuffer);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(flatten(octahedronIndex)), gl.STATIC_DRAW);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(flatten(cylinderIndex)), gl.STATIC_DRAW);
     // Associate out shader variables with our data buffer
     var vPos = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPos, 3, gl.FLOAT, false, 12, 0);
@@ -108,7 +108,7 @@ function render()
     gl.uniformMatrix4fv(modelView, false, flatten(trans));
     gl.uniformMatrix4fv(viewTransform,false,flatten(look));
     gl.uniformMatrix4fv(lightRotation,false,flatten(lightTrans));
-    gl.drawElements(gl.TRIANGLES, octahedronIndex.length ,gl.UNSIGNED_SHORT,0);
+    gl.drawElements(gl.TRIANGLES, cylinderIndex.length ,gl.UNSIGNED_SHORT,0);
 
     requestAnimFrame(render);
 }
