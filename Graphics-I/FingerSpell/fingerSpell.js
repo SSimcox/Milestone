@@ -103,8 +103,10 @@ function render()
     // var trans = mult(at,objectRot);
     // var lightTrans = mult(at, lightRot);
     //
-    // theta = $('#SSlide').val();
-    // delta = $('#LSlide').val();
+    theta = $('#SSlide').val();
+    palm.initialPos.xRotate = theta;
+    delta = $('#LSlide').val();
+    palm.initialPos.yRotate = delta;
     //
     // gl.uniformMatrix4fv(modelView, false, flatten(trans));
     // gl.uniformMatrix4fv(viewTransform,false,flatten(look));
@@ -118,26 +120,26 @@ function render()
 //function genNode(id,xs,ys,zs,xr,yr,zr,xt,yt,zt)
 
 function initPhalanges(id){
-    palm = new genNode(id,.75,.75,.2,0,0,0,0,0,0);
-    thumb1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    palm = new genNode(id,1,.75,.3,0,0,0,0,-.5,0);
+    thumb1 = new genNode(id,.5,.7,1,0,0,-45,1.2,-.75,0);
     thumb2 = new genNode(id,1,1,1,0,0,0,0,0,0);
     thumb3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     palm.leftChild = thumb1;
     thumb1.leftChild = thumb2;
     thumb2.leftChild = thumb3;
-    index1 = new genNode(id,.1,.2,.2,0,0,0,0,0,0);
+    index1 = new genNode(id,.5,.7,1,0,0,0,.7,.3,0);
     index2 = new genNode(id,1,1,1,0,0,0,0,0,0);
     index3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     thumb1.rightSibling = index1;
     index1.leftChild = index2;
     index2.leftChild = index3;
-    middle1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    middle1 = new genNode(id,.2,.4,.2,0,0,0,0,0,0);
     middle2 = new genNode(id,1,1,1,0,0,0,0,0,0);
     middle3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     index1.rightSibling = middle1;
     middle1.leftChild = middle2;
     middle2.leftChild = middle3;
-    ring1 = new genNode(id,.2,.2,.2,0,0,0,0,0,0);
+    ring1 = new genNode(id,.2,.4,.2,0,0,0,0,0,0);
     ring2 = new genNode(id,1,1,1,0,0,0,0,0,0);
     ring3 = new genNode(id,1,1,1,0,0,0,0,0,0);
     middle1.rightSibling = ring1;
@@ -152,34 +154,40 @@ function initPhalanges(id){
 }
 
 function drawTree(gl){
-    var cur = palm;
 
     var at = lookAt(vec3(0,0,5),vec3(0,0,0),vec3(0,1,0));
-    var look = perspective(60,1,0,5);
+    var look = perspective(60,1,0,20);
     var lightTrans = mat4();
-
-    drawNode(gl,{xRotate:0,yRotate:0,zRotate:0,xScale:0,yScale:0,zScale:0,xTranslate:0,yTranslate:0,zTranslate:0}, cur, at, look, lightTrans);
+    drawNode(gl,{xRotate:0,yRotate:0,zRotate:0,xScale:1,yScale:1,zScale:1,xTranslate:0,yTranslate:0,zTranslate:0}, palm, at, look, lightTrans);
 }
 
 function drawNode(gl, prevStuff, node, viewMatrix, look, lightTrans){
     if(node == null) return;
     var curStuff = addNodeData(prevStuff, node.initialPos);
 
-    var rotationMatrix = rotate(curStuff.xRotate,[1,0,0]);
-    rotationMatrix = mult(rotationMatrix,rotate(curStuff.yRotate,[0,1,0]));
-    rotationMatrix = mult(rotationMatrix,rotate(curStuff.zRotate,[0,0,1]));
-
-    var scaleMatrix = scalem(curStuff.xScale,curStuff.yScale,curStuff.zScale);
-
+    var firstRotationMatrix = rotate(prevStuff.xRotate,[1,0,0]);
+    firstRotationMatrix = mult(firstRotationMatrix,rotate(prevStuff.yRotate,[0,1,0]));
+    firstRotationMatrix = mult(firstRotationMatrix,rotate(prevStuff.zRotate,[0,0,1]));
+    var secondRotationMatrix = rotate(node.initialPos.xRotate,[1,0,0]);
+    secondRotationMatrix = mult(secondRotationMatrix,rotate(node.initialPos.yRotate,[0,1,0]));
+    secondRotationMatrix = mult(secondRotationMatrix,rotate(node.initialPos.zRotate,[0,0,1]));
+    var scaleMatrix = scalem(node.initialPos.xScale,node.initialPos.yScale,node.initialPos.zScale);
+    var prevScaleMatrix = scalem(curStuff.xScale,curStuff.yScale,curStuff.zScale);
     var translateMatrix = translate(curStuff.xTranslate,curStuff.yTranslate,curStuff.zTranslate);
-    var endMatrix = mult(viewMatrix,mult(translateMatrix,mult(scaleMatrix,rotationMatrix)));
+    var prevTranslateMatrix = translate(node.initialPos.xTranslate,node.initialPos.yTranslate,node.initialPos.zTranslate);
+
+    var currentTransposeMatrix = mult(translateMatrix,mult(secondRotationMatrix,scaleMatrix));
+    var prevTransposeMatrix = mult(firstRotationMatrix,mult(prevScaleMatrix, prevTranslateMatrix));
+
+    var endMatrix = mult(viewMatrix,mult(prevTransposeMatrix,currentTransposeMatrix));
+
 
     gl.uniformMatrix4fv(modelView, false, flatten(endMatrix));
-    look = mat4();
     gl.uniformMatrix4fv(viewTransform,false,flatten(look));
     gl.uniformMatrix4fv(lightRotation,false,flatten(lightTrans));
 
     gl.drawElements(gl.TRIANGLES, cylinderIndex.length ,gl.UNSIGNED_SHORT,0);
-    //drawNode(gl, curStuff, node.leftChild, viewMatrix, look, lightTrans);
-    //drawNode(gl, prevStuff, node.rightSibling, viewMatrix, look, lightTrans);
+
+    drawNode(gl, curStuff, node.leftChild, viewMatrix, look, lightTrans);
+    drawNode(gl, prevStuff, node.rightSibling, viewMatrix, look, lightTrans);
 }

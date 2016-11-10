@@ -24,15 +24,15 @@ function addNodeData(lhs,rhs){
         xRotate: lhs.xRotate + rhs.xRotate,
         yRotate: lhs.yRotate + rhs.yRotate,
         zRotate: lhs.zRotate + rhs.zRotate,
-        xScale: lhs.xScale + rhs.xScale,
-        yScale: lhs.yScale + rhs.yScale,
-        zScale: lhs.zScale + rhs.zScale,
+        xScale: lhs.xScale * rhs.xScale,
+        yScale: lhs.yScale * rhs.yScale,
+        zScale: lhs.zScale * rhs.zScale,
         xTranslate: lhs.xTranslate + rhs.xTranslate,
         yTranslate: lhs.yTranslate + rhs.yTranslate,
         zTranslate: lhs.zTranslate + rhs.zTranslate
     };
     return newData;
-};
+}
 
 
 

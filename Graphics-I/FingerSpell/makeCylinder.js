@@ -4,7 +4,8 @@
 
 var cylinderVertices = [];
 var bisections = [];
-var iterations = 5;
+var iterations = 2;
+var newCylinderVertices = [];
 
 var cylinderIndex = [
     //Top Pyramid
@@ -119,4 +120,10 @@ function bisect(i,j)
     }
 
   return temp;
+}
+
+function condenseVertices(){
+    for(var i = 0; i < cylinderIndex.length; ++i){
+        newCylinderVertices.push(cylinderVertices[cylinderIndex[i]]);
+    }
 }
