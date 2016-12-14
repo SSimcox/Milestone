@@ -17,7 +17,7 @@ $(document).ready(function(){
     })
     function dcclick() {
         if(!dcon) {
-            document.getElementById("dcframe").setAttribute("src","./Graphics-I/DragonCurve/index.html");
+            document.getElementById("dcframe").setAttribute("src","./Graphics-I/DragonCurve/index.ejs");
             document.getElementById("dc-iframe").style.height = "700px";
             document.getElementById("dc-iframe").style.display = "block";
             document.getElementById("sm-iframe").style.height = "0px";
@@ -36,7 +36,7 @@ $(document).ready(function(){
     function smclick() {
         if(!smon) {
 
-            document.getElementById("smframe").setAttribute("src","./Graphics-I/SierpinskiMountain/index.html");
+            document.getElementById("smframe").setAttribute("src","./Graphics-I/SierpinskiMountain/index.ejs");
             document.getElementById("dc-iframe").style.height = "0px";
             document.getElementById("dc-iframe").style.display = "none";
             document.getElementById("sm-iframe").style.height = "700px";
