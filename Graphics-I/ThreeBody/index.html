@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>Three Body Problem</title>
+
+    <link rel="stylesheet" type="text/css" href="../graphics.css">
+    <script type="text/javascript" src="Boilerplate/webgl-utils.js"></script>
+    <script type="text/javascript" src="Boilerplate/initShaders.js"></script>
+    <script type="text/javascript" src="Boilerplate/MV.js"></script>
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="makeSphere.js"></script>
+    <script type="text/javascript" src="genNormals.js"></script>
+    <script type="text/javascript" src="threeBodyMath.js"></script>
+    <script type="text/javascript" src="threeBody.js"></script>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+attribute vec4 vNormal;
+attribute vec3 myColor;
+
+varying vec4 outColor;
+uniform mat4 modelView;
+uniform mat4 perspective;
+uniform mat4 lightRotation;
+uniform mat4 scale;
+uniform mat4 lookat;
+uniform vec4 ap;
+uniform vec4 dp;
+uniform vec4 sp;
+
+
+void main() {
+
+    vec4 ambientProduct = ap;
+    vec4 diffuseProduct = dp;
+    vec4 specularProduct = sp;
+    float shininess = 50.0;
+    vec4 lightPosition = vec4(100.0,100.0,200.0,0.0);//Hard coded for now
+
+
+    vec3 pos = ( modelView * scale * vPosition).xyz;
+
+    //fixed light postion
+
+    vec3 light = (lightPosition).xyz;
+    //vec3 light = lightPosition.xyz;
+    //vec3 L = normalize( light - pos );
+    vec3 L = normalize(lightPosition.xyz);
+    L = normalize(light);
+
+    vec3 E = -normalize( pos );
+    vec3 H = normalize( L + E );
+
+    vec4 NN = vec4(vNormal.xyz,0);
+
+    // Transform vertex normal into eye coordinates
+
+    vec3 N = normalize( (modelView*NN).xyz);
+
+    // Compute terms in the illumination equation
+    vec4 ambient = ambientProduct;
+
+    float Kd = max( dot(L, N), 0.0 );
+    vec4  diffuse = Kd*diffuseProduct;
+
+    float Ks = pow( max(dot(N, H), 0.0), shininess );
+    vec4  specular = Ks * specularProduct;
+
+    if( dot(L, N) < 0.0 ) {
+	specular = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+    outColor = (ambient + diffuse +specular);
+
+    outColor.a = 1.0;
+	gl_PointSize = 1.0;
+    gl_Position = perspective * modelView * scale * vPosition;
+}
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+
+varying vec4 outColor;
+
+void main()
+{
+    gl_FragColor = outColor;
+}
+    </script>
+
+
+
+</head>
+
+<body style="width: 100%">
+    <h1>Three Body Problem</h1>
+    <h2>Steven Simcox</h2>
+    <div class="flexholder">
+        <div class="mainCanvas">
+            <canvas id="gl-canvas" width="512" height="512">
+            Oops ... your browser doesn't support the HTML5 canvas element
+            </canvas>
+            <div class="button-group">
+                <button id="forward" type="button">Forward</button>
+                <button id="left" type="button">Left</button>
+                <button id="right" type="button">Right</button>
+                <button id="backward" type="button">Backward</button>
+            </div>
+            <div class="button-group">
+                <button id="rup" type="button">Rotate Up</button>
+                <button id="rleft" type="button">Rotate Left</button>
+                <button id="rright" type="button">Rotate Right</button>
+                <button id="rdown" type="button">Rotate down</button>
+            </div>
+        </div>
+        <div class="mainCanvas">
+            <form>
+                <fieldset>
+                   <legend>Mass 1 (Orange)</legend>
+                    Mass :<input id="m0" type="number" value="1E19">
+                    Position x:<input id="p0x" type="number" value="0">
+                    Position y:<input id="p0y" type="number" value="0">
+                    Velocity x:<input id="v0x" type="number" value="0">
+                    Velocity y:<input id="v0y" type="number" value="0">
+                </fieldset>
+            </form>
+            <form>
+                <fieldset>
+                    <legend>Mass 2 (Green)</legend>
+                    Mass :<input id="m1" type="number" value="1e18">
+                    Position x:<input id="p1x" type="number" value="-200">
+                    Position y:<input id="p1y" type="number" value="0">
+                    Velocity x:<input id="v1x" type="number" value="0">
+                    Velocity y:<input id="v1y" type="number" value="-900">
+                </fieldset>
+            </form>
+            <form>
+                <fieldset>
+                    <legend>Mass 3 (Purple)</legend>
+                    Mass :<input id="m2" type="number" value="1e18">
+                    Position x:<input id="p2x" type="number" value="200">
+                    Position y:<input id="p2y" type="number" value="0">
+                    Velocity x:<input id="v2x" type="number" value="0">
+                    Velocity y:<input id="v2y" type="number" value="900">
+                </fieldset>
+            </form>
+            <button id="restart-btn" type="button">Restart</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -13,7 +13,7 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 passport.use(new GoogleStrategy({
         clientID: config.clientId,
         clientSecret: config.clientSecret,
-        callbackURL: "http://s-simcox.duckdns.org/auth/google/callback"
+        callbackURL: "http://s-simcox.duckdns.org/game/auth/google/callback"
     },
     function(token, tokenSecret, profile, done) {
         db.findOrCreate(profile, function (err, user) {
@@ -47,7 +47,7 @@ route.get('/google/callback',
                 return res.redirect('/');
             }
             //console.log("No error with user login");
-            return res.redirect('/game');
+            return res.redirect('/game/game');
         });
 
     });

@@ -10,6 +10,7 @@ var path = require('path');
 var engine = require('ejs-mate');
 var game = require('./routes/game');
 var index = require('./routes/index');
+var passport = require('passport');
 
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
@@ -17,9 +18,12 @@ app.set('/views', path.join(__dirname,'views'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/public', express.static('public'));
 app.use(session({ secret: 'eiGames', resave: true, saveUninitialized: true, cookie: { maxAge: 86400000, httpOnly: false, secure: false }}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 var auth = require('./routes/auth');
 
-app.use('/game',deserialize);
+//app.use('/game',deserialize);
 app.use('/',index);
 app.use('/game',game);
 app.use('/game/auth',auth);
@@ -31,11 +35,11 @@ function deserialize(req,res,next){
             req.user = req.session.passport.user;
         }
         else{
-            if(req.path != '/' && req.path != '/auth/google' && req.path != '/auth/google/callback')
+            if(req.path != '/' && req.path != '/game' && req.path != '/game/auth/google' && req.path != '/game/auth/google/callback')
                 return res.redirect('/');
         }
     }
     next();
 }
 
-app.listen(3000, function(){console.log("Listening on Port 3000")});
+app.listen(80, function(){console.log("Listening on Port 80")});

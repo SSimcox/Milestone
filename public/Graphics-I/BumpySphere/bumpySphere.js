@@ -43,8 +43,8 @@ window.onload = function init()
 
 
 
-    makeCylinder();
-    cylinderVertices = genNormals(cylinderVertices,cylinderIndex);
+    makeSphere();
+    octahedronVertices = genNormals(octahedronVertices,octahedronIndex);
 
     gl.enable(gl.DEPTH_TEST);
     gl.enable(gl.CULL_FACE);
@@ -73,7 +73,7 @@ window.onload = function init()
     gl.bufferData( gl.ARRAY_BUFFER, new Float32Array(flatten(octahedronVertices)), gl.STATIC_DRAW );
     var indicesBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indicesBuffer);
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(flatten(cylinderIndex)), gl.STATIC_DRAW);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(flatten(octahedronIndex)), gl.STATIC_DRAW);
     // Associate out shader variables with our data buffer
     var vPos = gl.getAttribLocation( program, "vPosition" );
     gl.vertexAttribPointer( vPos, 3, gl.FLOAT, false, 12, 0);

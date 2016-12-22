@@ -1,14 +1,14 @@
 <% include header %>
 
 <img src="<%= user.image.url %>" alt="user avatar">
-<form action="/auth" method="POST"><button>Logout</button></form>
+<form action="/game/auth" method="POST"><button>Logout</button></form>
 <form id="submit-score" action="/game" method="post">
     <input type="hidden" name="score">
     <input type="hidden" name="continue">
     <input type="hidden" name="difficulty">
 </form>
 
-<a href="/highScores">Scoreboard</a>
+<a href="/game/highScores">Scoreboard</a>
 <h3>How to Play:</h3>
 <p>Left click a cell to look underneath it. Right click once to mark the cell as a mine. Right click twice to mark it as maybe. Right click a third time to clear it.</p><br/>
 <p>The game is over when all safe cells are uncovered OR all mines are marked with flags.</p>
