@@ -29,6 +29,7 @@ h2{
 
 canvas {
     margin: 0px auto;
+    flex: 1 100%;
 }
 
 input{
@@ -48,11 +49,32 @@ input{
     background-color: rgba(80,255, 80, 1);
 }
 
+.flexholder{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
 .mainCanvas {
     width: 512px;
     margin: 0px auto;
     border: ridge 10px indianred;
     box-shadow: 10px 10px 5px #888888;
     align-content: center;
+    display: flex;
+    flex-flow: row wrap;
 }
 
+.button-group{
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 50%;
+}
+
+#forward,#backward,#rup,#rdown{
+    flex:1 100%;
+}
+
+#left,#right,#rright,#rleft{
+    flex:1 50%;
+}
