@@ -1,0 +1,29 @@
+<% include mainHeader %>
+
+<link href="/public/css/contact.css" rel="stylesheet">
+<script type="text/javascript" src="/public/js/contact.js"></script>
+
+<!-- Begin Main -->
+<div class="main contact">
+    <section class="contact">
+        <h1 class="bg-sec">Learn It On The Way</h1>
+        <p>
+            I'm on a personal journey to learn Web Development and Computer Graphics.
+            Join me and find out what tips and tricks I learn to make these new worlds
+            friendlier places to navigate! For now I will post weekly graphics programs
+            and the occasional "Today I learned..." style blog.
+        </p>
+    </section>
+    <section class="contact">
+        <form id="contact-form" name="contactForm">
+            <input class="half-flex" type="text" name="firstName" placeholder="First Name" required>
+            <input class="half-flex" type="text" name="lastName" placeholder="Last Name" required>
+            <input id="email" type="email" name="emailAddress" placeholder="Email Address" required>
+            <input id="confirm" type="email" placeholder="Confirm Email Address" required>
+            <button id="submit">Subscribe!</button>
+        </form>
+    </section>
+</div>
+<!-- End Main -->
+
+<% include mainFooter %>
